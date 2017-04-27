@@ -1,0 +1,46 @@
+keyframes
+	spinAround //旋转一周
+	
+class样式
+	is-block //display: block;
+	is-flex //盒子布局
+	is-inline //display: inline;
+	is-inline-flex 
+	is-clearfix
+	is-pulled-left //左浮动
+	is-pulled-right 
+	is-clipped //超出内容隐藏
+	is-overlay  //绝对布局，上下左右距离都为0
+	has-text-centered  //内容居中
+	has-text-left  //内容居左
+	has-text-right  //内容居右
+	is-hidden //display: none;
+	is-disabled //去掉鼠标onclick事件
+	is-marginless //上下左右外边距都为0
+	is-paddingless //上下左右内边距都为0
+	is-unselectable //用户不能选择元素中的任何内容
+	box //带有阴影的一块区域的基本样式
+	button //具有点击效果的元素
+	.button.is-white //白色背景黑字
+	.button.is-white.is-inverted //黑色背景白字
+	.button.is-black //黑色背景白字
+	//button各种背景色、各种字体大小
+	.button.is-fullwidth //宽100%
+	content //内容颜色
+	//规定内容里面的h标签，ul，ol标签，table等
+	input
+	textarea
+	checkbox
+	radio
+	select
+	label
+	help
+	field
+	icon
+	container//最小960
+	
+	
+body,button,input,select,textarea规定了字体系列
+	
+font-smoothing属性可以使字体变得更加清晰
+text-rendering属性用来给渲染引擎提供信息，让文本在速度和可读性方面得到优化
