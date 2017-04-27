@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="scripts/echarts.js"></script>
+</head>
+
+<body>
+    <div id="main" style="width: 600px;height:400px;border:1px solid #ccc;"></div>
+<script type="text/javascript">
+    // 初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    option = {
+        dataZoom: [
+            {
+                id: 'dataZoomX',
+                type: 'slider',
+                xAxisIndex: [0],
+                filterMode: 'filter', // 设定为 'filter' 从而 X 的窗口变化会影响 Y 的范围。
+                start: 30,
+                end: 70,
+                backgroundColor:'red',
+                handleSize:'100%'
+            },
+            {
+                id: 'dataZoomY',
+                type: 'slider',
+                yAxisIndex: [0],
+                filterMode: 'empty',
+                start: 20,
+                end: 80
+            }
+        ],
+        xAxis: {
+            type: 'value'
+        },
+        yAxis: {
+            type: 'value'
+            // yAxis 中并没有使用 min、max 来显示限定轴的显示范围。
+        },
+        series: {
+            type: 'bar',
+            data: [
+                // 第一列对应 X 轴，第二列对应 Y 轴。
+                [12, 24, 36],
+                [90, 80, 70],
+                [3, 9, 27],
+                [1, 11, 111]
+            ]
+        }
+    }
+    //使用刚指定的配置项和数据显示图表
+    myChart.setOption(option);
+</script>
+</body>
+
+</html>

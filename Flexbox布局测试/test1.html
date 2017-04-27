@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flexbox布局</title>
+    <style>
+        ul{/*flex容器*/
+            border:1px solid #000;
+            height: 800px;
+            min-width:800px;
+            padding: 20px 0 0 20px;
+            overflow: auto;
+            list-style: none;
+            display: flex;/*声明父元素为flex布局,一旦设置flex布局，那么父容器就变成flex容器，子元素就变成flex项目*/
+           /* flex-direction: column;*//*默认row，备选[row-reverse|column|column-reverse]*/
+           /* flex-wrap: wrap;*//*是否换行，备选值[wrap|nowrap|warp-reverse]，默认值nowrap*/
+            flex-flow: row wrap;/*flex-flow是flex-direction和flex-wrap的速记写法*/
+            /*设置flex项目在水平轴上的对齐方式备选值[flex-start|flex-end|center|space-between|space-around],space-between：第一个对齐左边，最后一个对齐→_→，其他均分；space-around:第一个距左边和最后一个距右边的距离一样，中间的间距是两边间距的2*/
+            justify-content:space-between;
+            /*align-items设置的是cross-axis的对齐方式，备选值[flex-start|flex-end|center|stretch|baseline],默认值stretch,意思是让所有的flex项目高度和flex容器高度一样*/
+            align-items:stretch;
+            /*设置多行的排列方式，备选值[stretch|flex-start|flex-end|center]*/
+            align-content: stretch;
+        }
+        li{/*flex项目*/
+            width: 100px;
+            /*height:100px;*/
+            background-color: orange;
+            margin: 20px;
+            overflow: auto;
+        }
+        li:nth-child(2){
+            /*排列顺序，可以接受争执，也可以接受负值，order小的值排在前面，默认为0，如果order值相同，排序则基于html源码*/
+           order:-1;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1声明父元素为flex布局,一旦设置flex布局</li>
+        <li>2flex-direction</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6默认row，备选[row-reverse|column|column-reverse]</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11设置flex项目的对齐方式,备选值[flex-start|flex-end|center|space-between|space-around],space-between：第一个对齐左边，最后一个对齐→_→，其他均分；space-around:第一个距左边和最后一个距右边的距离一样，中间的间距是两边间距的2倍</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+    </ul>
+</body>
+</html>

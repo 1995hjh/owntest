@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="scripts/echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;border:1px solid #ccc;"></div>
+    <script type="text/javascript">
+    // 初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'Echarts 入门示例',
+                show: true,
+                link:'http://echarts.baidu.com/index.html',
+                target:'blank',
+                textStyle:{
+                    color:'orange',
+                    fontStyle:'oblique',
+                    fontWeight:'bold',
+                    fontFamily:'sans-serif',
+                    fontSize:20
+                },
+                textAlign:'left',
+                textBaseline:'top',
+                subtext:'子标题',
+                padding: [5,10],
+                itemGap:10,
+                left:'0',
+                backgroundColor:'rgba(128, 128, 128, 0.5)'
+            },
+            tooltip: {},
+            legend: {//图例组件
+                data : [
+                    {
+                        name : '销量',
+                        icon: 'circle',
+                        textStyle:{
+                            color:'orange'
+                        }
+                    }
+                ],
+                right: '20px',
+                orient:'vertical',
+                itemWidth:30,
+                backgroundColor:'#ccc'
+            },
+            grid:{
+                show:true,
+                right:'20px',
+                containLabel:true,
+                backgroundColor:'rgba(128, 128, 128, 0.5)'
+            },
+            xAxis:{
+                type:'category',
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+                name:'类目',
+                nameLocation:'middle',
+                nameGap:30,
+                nameRotate:60,
+                axisLine:{
+                    lineStyle: {
+                        color: '#ff0000',
+                        width: 1,
+                        type: 'solid',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 0,
+                        opacity: 0.3,
+                    }
+                }
+            },
+            yAxis:{},
+            series:[{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        //使用刚指定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
