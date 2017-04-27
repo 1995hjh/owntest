@@ -1,0 +1,127 @@
+﻿创建秘钥：
+ssh-keygen -t rsa -C "1634094825@qq.com"
+将用户目录下的.ssh/d_rsa.pub粘贴到SSH_KEYS
+
+在相应的项目文件夹中init
+git init
+
+表明链接服务器地址
+git remote add devurl git@github.com:1995hjh/mobilePage.git
+//查看
+git remote -v
+
+创建分支
+git branch dev
+切换到对应分支
+ git checkout dev
+将本地分支提交到服务器
+git push devurl dev
+
+同步文件
+git pull devurl dev
+上传文件
+	1添加到本地仓库
+	git add readme.txt
+	2添加备注信息
+	git commit -m "this is a drscription,had better to write" 注意一定要使用双引号
+	3推送到服务器
+	git push devurl dev
+	
+
+	
+	git clone git@git.enjoy-cloud.com:12301/mobilePage.git
+	git checkout dev
+	14.多人协作
+	1,首先,视图用git push origin branch-name推送自己的修改
+	2.如果推送失败,需要git pull试图合并
+	3,如果合并冲突,则解决冲突,并本地提交
+	4.没有冲突或解决冲突后,再用git push origin branch-name推送就能成功!
+	如果git pull提示"no tracking information",则说明本地分支与远程分支的链接关系没有创建,用命令git branch --set-upstream branch-name origin/branch-name
+	在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+	
+	
+1.创建版本库
+	mkdir learngit
+	cd learngit
+	pwd  --显示当前目录
+	git init --目录下多了一个生成.git
+	在创建的版本库目录下放入要相应的文件
+	git add readme.txt
+	git add file2.txt file3.txt
+	git commit -m "this is a drscription,had better to write" 注意一定要使用双引号
+2.时光机穿梭
+	修改内容后,使用git status查看结果
+	查看具体修改内容,使用git diff命令
+	提交修改结果:
+	git add readme.txt
+	git status
+	git commit -m "add change"
+	git status
+	git status可以随时掌握工作区的状态 
+	注意每次修改都要先git add,在git commit,当然也可以最后一次性的git add,在git commit,总之两个步骤都不能少
+3.版本回退
+	git log
+	git log --pretty=oneline --查看更改日志
+	git reset --hard commit-id --可以进行穿梭
+	git reflog 记录操作记录,就可以回退到任意记录
+4.撤销修改
+	git checkout -- readme.txt 只要add,在无法撤销,丢弃工作区的修改
+	git reset HEAD readme.txt 丢弃暂存区的修改
+	add以后没有commit的,可以先丢弃暂存区的修改,在丢弃工作区的修改
+5.删除文件
+	rm test.txt后,可以通过git checkout -- test.txt找回来
+	git rm test.txt
+	git commit -m "remove test.txt"
+6.添加远程库
+	git remote add origin https://github.com/1995hjh/learngit.git
+	git push -u origin master
+	git push origin master
+7.从远程库克隆
+	git clone https://github.com/1995hjh/gitskills.git
+8.创建并合并分支
+	git checkout -b dev --创建dev分支并切换到dev分支下面,相当于[git branch dev,git checkout dev]
+	git branch --查看当前分支,带*表示当前分支
+	git merge dev --合并分支
+	合并完成后就可以删除分支dev了
+	git branch -d dev
+9.解决冲突
+	git log --graph --pretty=oneline --abbrev-commit --查看分支合并情况
+	如果两个分支都有修改文件,并add提交修改,那么合并以后会产生冲突,此时需要先解决冲突,重新编译修改的同一个文件,
+	再add提交,最后删除分支.即可解决冲突.
+10.分支管理策略:
+	 git merge --no-ff -m "merge with no-ff" dev  --表示禁用快速合并模式
+11.bug分支:
+	当你正在dev分支上开发的时候,任务并未完成,不能提交,这时需要修复一个bug,这时候你需要先把现场保护起来,使用git stash储藏工作现场,
+然后确定在哪个分支上修复bug,在在那个分支上创建临时分支,修复bug,add提交,然后合并分支,删除临时分支,这时候再回到dev分支,使用git stash list
+命令查看工作现场的存储,这时候可以直接用git stash pop恢复现场同时删除stash的内容,也可以分两步走,先git stash apply恢复现场,在git stash drop
+删除stash,然后在git stash list就没有任何内容了.
+12.feature分支
+	一般开发一个新功能需要一个feature分支,一般步骤是建立并切换到feature分支工作,修改代码,add提交,切换到dev工作分支去,合并feature分支,然后删除feature分支.
+但是如果feature分支已经提交,但此时需要废除该新功能,不再需要合并,那么此时需要强制删除这个分支使用命令:git branch -D feature
+13.查看远程库的信息:
+	git remote  --显示远程库的名字
+	git remote -v --显示远程库的详细信息
+14.多人协作
+	1,首先,视图用git push origin branch-name推送自己的修改
+	2.如果推送失败,需要git pull试图合并
+	3,如果合并冲突,则解决冲突,并本地提交
+	4.没有冲突或解决冲突后,再用git push origin branch-name推送就能成功!
+	如果git pull提示"no tracking information",则说明本地分支与远程分支的链接关系没有创建,用命令git branch --set-upstream branch-name origin/branch-name
+	在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+15.创建标签:
+	git tag name  --创建标签
+	git tag        --查看所有标签
+	可以通过git log --pretty=oneline --abbrev-commit查看所有commit id,然后通过git tag name commit_Id在以前的commit id上建立相应的标签
+	git show name --查看标签信息
+	git tag -a name -m "description" commit_Id --创建带有说明的标签,-a指定标签名
+16.操作标签
+	git tag -d name  --删除标签
+	git push origin name --推送标签到远程
+	git push origin --tags 一次性推送所有尚未推送到远程的本地标签
+	如果删除推送到远程的标签:
+		1.先从本地删除:git tag -d name推送就能成功
+		2.从远程删除:git push origin :refs/tags/name
+	
+	
+	
+	
