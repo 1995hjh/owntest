@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖动</title>
+</head>
+<body>
+	<script>
+	let obj = {
+        id: 10,
+        name: 'xiao',
+        age: 18,
+        score: 99,
+        user: 1,
+        owner: 2,
+        admin_other: 3,
+        dashboard: 11,
+        program: 12,
+        coupon_detail: 13,
+        coupon_add: 14,
+        templet: 15,
+        user_management: 16,
+        authorizaion: 17,
+        order: 18,
+        client: 19,
+        recommend: 20,
+        commssion: 21,
+        extra_settle: 22,
+        settlement: 23,
+        payment: 24,
+        balance: 25,
+        invoice: 26,
+        message: 27,
+        refund: 28,
+         admin: 77,
+        userAdmin: 34,
+        user: 2,
+        user01: 3,
+        explain: '按小时为单位时间段出租',
+        brief1: 'b',
+        brief2: 'ar',
+        mode: 2,
+        eqPlayerMode: 0,
+        secondsPerPunit: 10,
+        punitsMax: 360,
+        playlistDuration: 3600,
+        playlistDurationMax: 3600,
+    }
+    //1、对象转数组：(1)直接转数组
+    let array1 = [];
+    for (let i in obj) {
+        let o = {};
+        o[i] = obj[i];
+        array1.push(o);
+    }
+    console.warn(1, array1);
+    // (2)数组中的对象进行重组
+    let array2 = [];
+    for (let i in obj) {
+        let o = {
+            label: i,
+            value: obj[i]
+        };
+        array2.push(o);
+    }
+   console.warn(2, array2);
+    let array3 = [];
+    for (let i = 0; i < 50;i++){
+        array3.push(obj);
+    }
+    console.warn(3, array3);
+    //2、针对数组遍历的情况：(1)遍历下标
+    console.time('array4');
+    let array4 = [];
+    for (let i = 0, max = array3.length;i < max;i++) {
+        array4.push(array3[i].id);
+    }
+    console.warn(4, array4.length);
+    console.timeEnd('array4');
+    //2、针对数组遍历的情况：(2)遍历下标，减少变量max，减量循环至0，据说和零比较要比和非零数字或数组长度比较要高效的多，考虑到一般业务处理，所以处理完成之后需要将数据reserve()重新排序
+    console.time('array5');
+    let array5 = [];
+    for (let i = array3.length;i--;) {
+        array5.push(array3[i].id);
+    }
+    array5.reverse();
+    console.warn(5, array5.length);
+    console.timeEnd('array5');
+    //2、针对数组遍历的情况：(3)遍历数组对象
+    console.time('array6');
+    let array6 = [];
+    for (let i = 0;i < array3.length;i++) {
+        array6.push(array3[i].id);
+    }
+    console.warn(6, array6.length);
+    console.timeEnd('array6');
+    //2、针对数组遍历的情况：(4)map方法遍历
+    console.time('array7');
+    let array7 = [];
+    array3.map((item) => {
+        array7.push(item.id);
+    });
+    console.warn(7, array7.length);
+    console.timeEnd('array7');
+    //2、针对数组遍历的情况：(5)for of 方法遍历
+    console.time('array8');
+    let array8 = [];
+    for(let i of array3) {
+        array8.push(array3.name);
+    }
+    console.warn(8, array8.length);
+    console.timeEnd('array8');
+
+    //2、针对数组遍历的情况：(6)forEach 方法遍历
+    console.time('array9');
+    let array9 = [];
+    array3.forEach((item) => {
+        array9.push(item.id);
+    });
+    console.warn(9, array9.length);
+    console.timeEnd('array9');
+
+	</script>
+</body>
+</html>
